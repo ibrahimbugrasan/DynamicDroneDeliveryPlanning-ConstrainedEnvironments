@@ -1,5 +1,128 @@
 # Drone Delivery Optimization System
 
+# 🚁 Drone Teslimat Rota Optimizasyonu
+
+Bu proje, enerji limitleri ve uçuş yasağı bölgeleri (no-fly zone) gibi dinamik kısıtlar altında çalışan drone'lar için en uygun teslimat rotalarının belirlenmesini sağlayan bir algoritma sistemidir. A* algoritması ve Genetik Algoritma kullanarak çoklu drone filo yönetimi için yenilikçi ve uyarlanabilir bir çözüm sunar.
+
+## 🎯 Proje Amacı
+
+Teslimat hizmeti sunan lojistik firmaları için:
+
+- Farklı ağırlık ve öncelik seviyelerine sahip paketleri
+- Çok sayıda drone ile kısa sürede ve verimli bir şekilde
+- Enerji kısıtları, uçuş yasağı bölgeleri ve dinamik değişkenler altında
+- En uygun rota planlaması yapan algoritma geliştirmek
+
+## ✨ Özellikler
+
+### 🔧 Algoritma Özellikleri
+
+- **A* Algoritması**: En kısa yol bulma için heuristik arama
+- **Genetik Algoritma**: Çoklu drone optimizasyonu için evrimsel yaklaşım
+- **CSP (Constraint Satisfaction Problem)**: Dinamik kısıt yönetimi
+- **Graf Tabanlı Modelleme**: Komşuluk listesi ile verimli hesaplama
+
+### 🚫 Kısıt Yönetimi
+
+- **Enerji Limitleri**: Drone batarya kapasitesi kontrolü
+- **Ağırlık Kapasitesi**: Maksimum taşıma ağırlığı kısıtları
+- **No-Fly Zone'lar**: Dinamik uçuş yasağı bölgeleri
+- **Zaman Pencereleri**: Teslimat zaman aralığı kısıtları
+- **Öncelik Seviyeleri**: Acil teslimatlar için önceliklendirme
+
+### 📊 Analiz ve Görselleştirme
+
+- **Performans Metrikleri**: Teslimat oranı, enerji tüketimi, çalışma süresi
+- **Görsel Haritalar**: Matplotlib ile rota görselleştirmesi
+- **Karşılaştırmalı Analiz**: A* vs Genetik Algoritma performansı
+
+## 🚀 Kurulum
+
+### Gereksinimler
+
+```bash
+Python 3.8+
+matplotlib
+numpy (opsiyonel, performans için)
+```
+
+## Kurulum Adımları
+
+### Projeyi klonlayın
+```bash
+git clone https://github.com/kullaniciadi/drone-delivery-optimization.git
+cd drone-delivery-optimization
+```
+
+### Gerekli paketleri yükleyin
+```bash
+pip install matplotlib numpy
+```
+
+### Veri klasörünü oluşturun
+```bash
+mkdir data
+```
+
+## 📁 Proje Yapısı
+
+```bash
+drone-delivery-optimization/
+├── README.md
+├── requirements.txt
+├── main.py                 # Ana çalıştırma dosyası
+├── drone.py               # Veri sınıfları (Drone, DeliveryPoint, NoFlyZone)
+├── data_generator.py      # Rastgele test verisi üretici
+├── data_loader.py         # Veri dosyalarını yükleme modülü
+├── graph_utils.py         # Graf işlemleri ve yardımcı fonksiyonlar
+├── astar.py              # A* algoritması implementasyonu
+├── genetic.py            # Genetik algoritma implementasyonu
+├── visualize.py          # Sonuçları görselleştirme modülü
+└── data/                 # Veri dosyaları klasörü
+    ├── drones.txt
+    ├── deliveries.txt
+    └── noflyzones.txt
+```
+
+## 🎮 Kullanım
+### Temel Kullanım
+```bash
+from main import run_scenario
+from data_loader import load_drones, load_deliveries, load_noflyzones
+```
+
+### Veriyi yükle
+```bash
+drones = load_drones("data/drones.txt")
+deliveries = load_deliveries("data/deliveries.txt")
+noflyzones = load_noflyzones("data/noflyzones.txt")
+```
+
+### Senaryoyu çalıştır
+```bash
+solution, fitness, time = run_scenario(drones, deliveries, noflyzones, "Test Senaryosu")
+```
+
+### Rastgele Senaryo Üretimi
+```bash
+from data_generator import generate_scenario
+
+# 5 drone, 20 teslimat, 3 no-fly zone ile senaryo oluştur
+generate_scenario(
+    num_drones=5,
+    num_deliveries=20,
+    num_noflyzones=3,
+    scenario_name="test_scenario"
+)
+```
+
+### Ana Programı Çalıştırma
+```bash
+python main.py
+```
+
+// ... existing code ...
+
 ## 📋 Veri Formatları
 
 ### Drone Verisi (drones.txt)

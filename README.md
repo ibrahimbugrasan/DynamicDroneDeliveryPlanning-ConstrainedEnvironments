@@ -121,7 +121,7 @@ generate_scenario(
 python main.py
 ```
 
-// ... existing code ...
+
 
 ## 📋 Veri Formatları
 
